@@ -1,24 +1,28 @@
-package uia.com.agenda.menu;
+package uia.com.agenda.menuEv;
 
-import uia.com.agenda.MenuModificaContacto;
-import uia.com.agenda.menuEv.MenuEventos;
+import uia.com.agenda.Contacto;
+import uia.com.agenda.menu.APantalla;
 
 import java.util.Scanner;
 
-public class MenuMain extends APantalla {
+public class MenuBorraEvento extends APantalla {
     private static final String OPTION_EXIT="0";
     private static final String LEVEL_INDENTATION ="    ";
     private int level=0;
-    private int opcionContacto=-1;
+    private Contacto nuevoContacto;
+    private int opcionEvento=-1;
 
-    public MenuMain(String menú_principal, String s, String[] opciones, String s1, String s2) {
+    public MenuBorraEvento(String menú_principal, String s, String[] opciones, String s1, String s2) {
         super(menú_principal,s,opciones,s1,s2);
 
         Scanner in = new Scanner(System.in);
         despliega();
-        opcionContacto = in.nextInt();
+        opcionEvento = in.nextInt();
 
-        switch (opcionContacto) {
+        switch (opcionEvento) {
+            case 0:
+                System.out.println("Hasta luego del menu de contactos");
+                return;
             case 1:
                 System.out.println("Seleccionó opción  1");
                 pregunta();
@@ -40,7 +44,7 @@ public class MenuMain extends APantalla {
         }
     }
 
-    public MenuMain() {
+    public MenuBorraEvento() {
 
     }
 
@@ -52,30 +56,37 @@ public class MenuMain extends APantalla {
     }
 
 
+    public void itera() {
+    }
+
+
+    public void modificaEvento() {
+    }
+
+    public void borraEvento() {
+    }
+
+
 
     public void pregunta() {
         System.out.println("¿Quiere continuar o salir ??");
-        System.out.println("Para continuar, confirme introduciendo: "+opcionContacto);
+        System.out.println("Para continuar, confirme introduciendo: "+opcionEvento);
         System.out.println("Si desea salir introduzca 0.");
 
         Scanner q = new Scanner(System.in);
 
         switch (q.nextInt()) {
             case 0:
-                System.out.println("Thank you and goodbye.");
+                System.out.println("Thank you and godbye.");
                 break;
 
             case 1:
                 System.out.println("Seleccionó opción  1");
-                String[] opcionesMenuContactos ={"Salir", "Nuevo", "Modificar", "Borrar"};
-                MenuContactos menuContactos = new MenuContactos("Menú Contactos", "Introduzca la opcion deseada ?:",  opcionesMenuContactos, "", "");
                 pregunta();
                 break;
 
             case 2:
                 System.out.println("Seleccionó opción  2");
-                String[] opcionesMenuEventos = {"Salir", "Nuevo", "Modificar", "Borrar"};
-                MenuEventos menuEventos = new MenuEventos("Menu Eventos", "Introduzca la opcion deseada", opcionesMenuEventos, "", "");
                 pregunta();
                 break;
 
@@ -90,7 +101,6 @@ public class MenuMain extends APantalla {
 
         }
     }
-
 
 
 }
